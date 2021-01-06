@@ -1,0 +1,22 @@
+package com.ashwin.kafkaproducer.producer;
+
+import com.ashwin.kafkaproducer.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.core.KafkaTemplate;
+
+@Configuration
+public class Producer {
+
+    @Autowired
+    private KafkaTemplate<String, User> kafkaTemplate;
+
+    public String publish(String topic, User user) {
+        try {
+            kafkaTemplate.send(topic, user);
+            return "Success";
+        } catch (Exception e) {
+            return "Failed";
+        }
+    }
+}
