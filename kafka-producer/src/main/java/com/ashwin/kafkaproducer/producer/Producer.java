@@ -1,5 +1,6 @@
 package com.ashwin.kafkaproducer.producer;
 
+import com.ashwin.kafkaproducer.Exception.UnreachableProducer;
 import com.ashwin.kafkaproducer.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,7 @@ public class Producer {
             kafkaTemplate.send(topic, user);
             return "Success";
         } catch (Exception e) {
-            return "Failed";
+            throw new UnreachableProducer("Producer not found.");
         }
     }
 }
