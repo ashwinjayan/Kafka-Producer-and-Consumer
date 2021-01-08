@@ -1,0 +1,31 @@
+#server
+server.port: 8081
+
+#mongodb
+auto.create.topics.enable: true
+
+spring:
+    json:
+        use.type.headers: false
+    data.mongodb.uri: "mongodb://localhost:27017/app1"
+    kafka:
+        incoming.topic: Kafka_Example
+#        bootstrap-servers: 127.0.0.1:9092
+#        consumer:
+#        # Configures the Spring Kafka ErrorHandlingDeserializer that delegates to the 'real' deserializers
+#            auto-offset-reset: earliest
+#            enable-auto-commit: false
+#            group-id: group_id
+#            key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+#            value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+#            properties.spring.json.trusted.packages: "*"
+#        properties:
+#        # Delegate deserializers
+#            spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+#            spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+
+#logging
+logging:
+    level:
+        root: error
+        org.springframework.data: debug

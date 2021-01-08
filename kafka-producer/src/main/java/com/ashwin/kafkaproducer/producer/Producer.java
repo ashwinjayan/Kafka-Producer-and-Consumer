@@ -12,10 +12,9 @@ public class Producer {
     @Autowired
     private KafkaTemplate<String, User> kafkaTemplate;
 
-    public String publish(String topic, User user) {
+    public void publish(String topic, User user) {
         try {
             kafkaTemplate.send(topic, user);
-            return "Success";
         } catch (Exception e) {
             throw new UnreachableProducer("Producer not found.");
         }
